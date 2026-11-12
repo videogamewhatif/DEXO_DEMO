@@ -25,7 +25,7 @@ No se ha desplegado nada a producción desde este trabajo. Elige proveedor y pla
 
 ## Checklist de producción
 
-- [ ] `DEMO_MODE_ENABLED=false` (o sin definir con `NODE_ENV=production`).
+- [ ] En una presentación sin Supabase/base de datos, la demo pública queda disponible automáticamente; define `DEMO_MODE_ENABLED=false` para desactivarla. En producción con datos reales, mantenla desactivada.
 - [ ] `APP_URL` con HTTPS; redirect URIs registradas en Google y Meta con ese dominio.
 - [ ] Registro público desactivado en Supabase; SMTP propio en Supabase y `SMTP_*` en la app.
 - [ ] `TOKEN_ENCRYPTION_KEYS` y `CRON_SECRET` generados y guardados en el gestor de secretos.

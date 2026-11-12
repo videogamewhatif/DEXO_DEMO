@@ -7,7 +7,7 @@ Todas se validan al arrancar (`src/config/env.ts`). Una variable vacía (`VAR=`)
 | Variable | Tipo | Requerida | Uso |
 | --- | --- | --- | --- |
 | `APP_URL` | Servidor | Sí (prod.) | URL pública base. Se usa para redirect URIs OAuth, enlaces de invitación y verificación de `Origin`. |
-| `DEMO_MODE_ENABLED` | Servidor | No | `true`/`false`. Por defecto `true` fuera de producción y `false` en producción. |
+| `DEMO_MODE_ENABLED` | Servidor | No | `true`/`false`. Sin definir, está activa fuera de producción y también en producción cuando falta la configuración de Supabase o la base de datos. Con todo configurado, queda apagada en producción. `false` siempre la desactiva. |
 | `NEXT_PUBLIC_SUPABASE_URL` | Pública | Sí (auth) | URL del proyecto Supabase. Se lee en tiempo de ejecución en el servidor. |
 | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Pública | Sí (auth) | Clave publicable `sb_publishable_…`. |
 | `SUPABASE_SECRET_KEY` | **Secreta** | Sí (invitaciones) | Clave secreta `sb_secret_…`. Solo para crear la cuenta de una persona invitada tras validar su invitación y en scripts. Nunca para eludir RLS en peticiones de usuarios. |

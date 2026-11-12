@@ -72,7 +72,7 @@ export function resetEnvCache() {
 export function isDemoEnabled(): boolean {
   const env = serverEnv();
   if (env.DEMO_MODE_ENABLED) return env.DEMO_MODE_ENABLED === "true";
-  return env.NODE_ENV !== "production";
+  return env.NODE_ENV !== "production" || !isAuthConfigured();
 }
 
 export function isAuthConfigured(): boolean {
