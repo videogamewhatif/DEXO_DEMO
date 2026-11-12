@@ -1,0 +1,46 @@
+# Configuración para desarrollo local con Supabase CLI (requiere Docker):
+#   npx supabase start      # levanta Postgres, Auth, Studio y Mailpit
+#   npx supabase db reset   # aplica supabase/migrations y supabase/seed.sql
+# En el proyecto hospedado, replica estos ajustes en el panel (ver docs/guia-supabase.md).
+project_id = "nexo-analytics"
+
+[api]
+enabled = true
+port = 54321
+# El esquema `nexo` NO se expone por la API REST: la app accede desde el servidor.
+schemas = ["public", "graphql_public"]
+extra_search_path = ["public", "extensions"]
+
+[db]
+port = 54322
+major_version = 17
+
+[db.seed]
+enabled = true
+sql_paths = ["./seed.sql"]
+
+[studio]
+enabled = true
+port = 54323
+
+[inbucket]
+enabled = true
+port = 54324
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["http://localhost:3000/auth/confirm"]
+jwt_expiry = 3600
+# Acceso solo por invitación: sin registro público.
+enable_signup = false
+enable_refresh_token_rotation = true
+
+[auth.email]
+enable_signup = false
+double_confirm_changes = true
+enable_confirmations = true
+
+[auth.email.template.recovery]
+subject = "Restablece tu contraseña de Nexo Analytics"
+content_path = "./supabase/templates/recovery.html"

@@ -1,0 +1,56 @@
+{
+  "name": "nexo-analytics",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.9.0"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --project unit",
+    "test:db": "vitest run --project db",
+    "test:all": "vitest run",
+    "test:e2e": "playwright test",
+    "worker": "node --conditions=react-server --env-file-if-exists=.env.local --import tsx src/worker/main.ts",
+    "admin:create-platform-admin": "node --conditions=react-server --env-file-if-exists=.env.local --import tsx scripts/create-platform-admin.ts",
+    "keys:generate": "node --import tsx scripts/generate-encryption-key.ts",
+    "keys:rotate": "node --conditions=react-server --env-file-if-exists=.env.local --import tsx scripts/rotate-encryption-key.ts",
+    "db:local:start": "bash scripts/local-pg.sh start",
+    "db:local:stop": "bash scripts/local-pg.sh stop"
+  },
+  "dependencies": {
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.118.0",
+    "lucide-react": "1.61.0",
+    "next": "16.4.3",
+    "nodemailer": "10.2.1",
+    "pg": "8.23.1",
+    "react": "19.2.9",
+    "react-dom": "19.2.9",
+    "react-is": "19.2.9",
+    "recharts": "3.10.1",
+    "server-only": "0.0.1",
+    "zod": "4.6.6"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@tailwindcss/postcss": "4.3.3",
+    "@types/node": "24.19.2",
+    "@types/nodemailer": "8.0.2",
+    "@types/pg": "8.23.1",
+    "@types/react": "19.2.18",
+    "@types/react-dom": "19.2.7",
+    "eslint": "9.39.4",
+    "eslint-config-next": "16.4.3",
+    "jose": "6.2.17",
+    "tailwindcss": "4.3.3",
+    "tsx": "4.23.15",
+    "typescript": "6.0.3",
+    "vitest": "4.1.12"
+  }
+}
